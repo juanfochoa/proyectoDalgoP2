@@ -52,19 +52,19 @@ public class ProblemaP2 {
     private static boolean esRedundante(UnionFind fibra, UnionFind coaxial, int n){
         
         // conjuntos para contar componentes conexas
-        Map<Integer, Integer> componentesFibra = new java.io.HashMap();
-        Map<Integer, Integer> componentesCoaxial = new HashMap();
+        Map<Integer, Set<Integer>> componentesFibra = new HashMap<>();
+        Map<Integer, Set<Integer>> componentesCoaxial = new HashMap<>();
 
         // se agrupan los nodos por componentes en fibra y en coaxial
         for (int i=1; i<=n; i++){
             int raizFibra = fibra.find(i);
-            componentesFibra.putIfAbsent(raizFibra,new HashSet<>());
+            componentesFibra.putIfAbsent(raizFibra,new HashSet<Integer>());
             componentesFibra.get(raizFibra).add(i);
         }  
 
         for (int i=1; i<=n; i++){
             int raizCoaxial = coaxial.find(i);
-            componentesCoaxial.putIfAbsent(raizCoaxial,new HashSet<>());
+            componentesCoaxial.putIfAbsent(raizCoaxial,new HashSet<Integer>());
             componentesCoaxial.get(raizCoaxial).add(i);
         }
 
